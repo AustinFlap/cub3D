@@ -87,9 +87,8 @@ void				bmp(t_img *img, t_game *game)
 
 	bmp_h = NULL;
 	file_h = NULL;
-	if (!(file_h = ft_calloc(14, sizeof(unsigned char))))
-		abort_screenshot(game, bmp_h, file_h);
-	if (!(bmp_h = ft_calloc(50, sizeof(unsigned char))))
+	if ((!(file_h = ft_calloc(14, sizeof(unsigned char))) ||
+		!(bmp_h = ft_calloc(50, sizeof(unsigned char)))))
 		abort_screenshot(game, bmp_h, file_h);
 	if ((fd = open("screenshot.bmp", O_CREAT)) == ERROR)
 		abort_screenshot(game, bmp_h, file_h);

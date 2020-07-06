@@ -70,7 +70,6 @@ int			value(t_file *file, int id, char *line, int n_goal)
 	if (!(temp = malloc(sizeof(int) * n_goal)))
 		return (ERROR);
 	while (*line++)
-	{
 		if (!is_sep(*(line - 1), 1))
 		{
 			if ((temp[n++] = ft_atoi(line - 1)) > 255 && (id == 6 || id == 7))
@@ -81,10 +80,11 @@ int			value(t_file *file, int id, char *line, int n_goal)
 			while (!is_sep(*(line - 1), 1) && *line)
 				line++;
 		}
-	}
 	file->r = (id == 5) ? temp : file->r;
 	file->f = (id == 6) ? temp : file->f;
 	file->c = (id == 7) ? temp : file->c;
+	if (id == 5 && (!file->r[0] || !file->r[1]))
+		return (ERROR);
 	return (SUCCESS);
 }
 

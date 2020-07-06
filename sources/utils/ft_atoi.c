@@ -12,9 +12,9 @@
 
 #include "../../includes/cub3d.h"
 
-int		overflow(int nb, char car, int u)
+int					overflow(int nb, char car, int u)
 {
-	unsigned int test;
+	unsigned int	test;
 
 	test = nb + (car - 48) * u;
 	if (test > 2147483647)
@@ -22,11 +22,11 @@ int		overflow(int nb, char car, int u)
 	return (0);
 }
 
-int		ft_atoi(const char *nptr)
+int					ft_atoi(const char *nptr)
 {
-	int			nb;
-	const char	*temp;
-	int			u;
+	int				nb;
+	const char		*temp;
+	int				u;
 
 	u = 1;
 	nb = 0;
@@ -37,9 +37,8 @@ int		ft_atoi(const char *nptr)
 		temp++;
 	while (*temp >= '0' && *temp <= '9')
 		temp++;
-	while ((temp != nptr) || ((*temp < 9 && *temp > 13) && *temp != ' '))
+	while ((temp != nptr) || ((*temp < 9 && *temp > 13) && *temp-- != ' '))
 	{
-		temp--;
 		if (*temp >= '0' && *temp <= '9')
 		{
 			if (overflow(nb, *temp, u))

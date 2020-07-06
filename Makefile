@@ -35,7 +35,7 @@ CFLAGS = -Wall -Wextra -Werror -lm -lbsd -lX11 -lXext
 
 SRC_DIR = sources/
 
-MLX_DIR = mlx_linux/
+MLX_DIR = minilibx-linux/
 
 NAMEMLX = libmlx.a
 

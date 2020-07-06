@@ -19,7 +19,7 @@
 # include <fcntl.h>
 # include <math.h>
 # include <stdio.h>
-# include "mlx_linux/mlx.h"
+# include "../minilibx-linux/mlx.h"
 # include "get_next_line.h"
 
 # define SUCCESS 1

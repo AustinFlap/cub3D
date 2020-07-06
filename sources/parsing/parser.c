@@ -103,31 +103,30 @@ int				read_line(char *line, t_file *file)
 	return (SUCCESS);
 }
 
-int				parser(t_file *file, char *file_name)
+int				parser(t_file *f, char *file_name)
 {
 	char		*line;
 	int			fd;
 	int			ret;
 
-	if (init(file, &line, &fd, file_name) != SUCCESS)
+	if (init(f, &line, &fd, file_name) != SUCCESS)
 		return (error(fd, line, ""));
 	ret = 1;
 	while (ret)
 	{
 		if ((ret = get_next_line(fd, &line)) == ERROR)
 			return (error(fd, line, ""));
-		if (read_line(line, file) != SUCCESS)
+		if (read_line(line, f) != SUCCESS)
 			return (error(fd, line, ""));
 		free(line);
 	}
 	close(fd);
-	if (assemble_map(file) != SUCCESS)
+	if (assemble_map(f) != SUCCESS)
 		return (error(fd, NULL, "Map non valide\n"));
-	if (!file->r[0] || !file->r[1])
-		return (error(fd, NULL, "Resolution nulle\n"));
-	if (!file->path[0] || !file->path[1] || !file->path[2] || !file->path[3] ||		!file->path[4] || !file->r || !file->c || !file->f)
+	if (!f->path[0] || !f->path[1] || !f->path[2] || !f->path[3] || !f->path[4]
+	|| !f->r || !f->c || !f->f)
 		return (error(fd, NULL, "Element manquant\n"));
-	file->hex_f = get_rgb(file->f[2], file->f[1], file->f[0]);
-	file->hex_c = get_rgb(file->c[2], file->c[1], file->c[0]);
+	f->hex_f = get_rgb(f->f[2], f->f[1], f->f[0]);
+	f->hex_c = get_rgb(f->c[2], f->c[1], f->c[0]);
 	return (SUCCESS);
 }
