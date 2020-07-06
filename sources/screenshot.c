@@ -6,7 +6,7 @@
 /*   By: avieira <avieira@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/30 13:57:16 by avieira           #+#    #+#             */
-/*   Updated: 2020/07/06 02:04:31 by avieira          ###   ########.fr       */
+/*   Updated: 2020/07/06 02:36:47 by avieira          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,4 +105,6 @@ void				bmp(t_img *img, t_game *game)
 		abort_screenshot(game, bmp_h, file_h);
 	if (close(fd) == ERROR)
 		abort_screenshot(game, bmp_h, file_h);
+	free(bmp_h);
+	free(file_h);
 }
