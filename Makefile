@@ -34,6 +34,9 @@ IFLAGS = ./includes/
 CFLAGS = -Wall -Wextra -Werror -lm -lbsd -lX11 -lXext
 
 SRC_DIR = sources/
+GNL_DIR = sources/GNL/
+PARS_DIR = sources/parsing/
+UTILS_DIR = sources/utils/
 
 MLX_DIR = minilibx-linux/
 
@@ -58,6 +61,9 @@ clean:
 	@(echo "$(STRT_STYLE)Cleaning...$(END_STYLE)")
 	@(make -s clean -C $(MLX_DIR))
 	@($(RM) $(SRC_DIR)/*.o)
+	@($(RM) $(GNL_DIR)/*.o)
+	@($(RM) $(PARS_DIR)/*.o)
+	@($(RM) $(UTILS_DIR)/*.o)
 	@(echo "$(STRT_STYLE)Done.$(END_STYLE)")
 
 fclean: clean

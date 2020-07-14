@@ -69,7 +69,8 @@ void		free_file(t_file *file)
 
 int			destroy(t_game *game, char *msg)
 {
-	write(1, msg, ft_strlen(msg));
+	if (*msg != 17)
+		write(1, msg, ft_strlen(msg));
 	free_file(&game->file);
 	if (game->mlx.pmlx)
 	{

@@ -33,12 +33,11 @@ int					ft_atoi(const char *nptr)
 	temp = nptr;
 	while ((*temp >= 9 && *temp <= 13) || *temp == ' ')
 		temp++;
-	if (*temp == '-' || *temp == '+')
-		temp++;
 	while (*temp >= '0' && *temp <= '9')
 		temp++;
-	while ((temp != nptr) || ((*temp < 9 && *temp > 13) && *temp-- != ' '))
+	while ((temp != nptr) || ((*temp < 9 && *temp > 13) && *temp != ' '))
 	{
+		temp--;
 		if (*temp >= '0' && *temp <= '9')
 		{
 			if (overflow(nb, *temp, u))
