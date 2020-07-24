@@ -6,25 +6,15 @@
 /*   By: avieira <avieira@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/08 20:44:21 by avieira           #+#    #+#             */
-/*   Updated: 2020/07/01 14:23:33 by avieira          ###   ########.fr       */
+/*   Updated: 2020/07/23 21:54:32 by avieira          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cub3d.h"
 
-int					overflow(int nb, char car, int u)
+int		ft_atoi(const char *nptr)
 {
-	unsigned int	test;
-
-	test = nb + (car - 48) * u;
-	if (test > 2147483647)
-		return (1);
-	return (0);
-}
-
-int					ft_atoi(const char *nptr)
-{
-	int				nb;
+	unsigned int	nb;
 	const char		*temp;
 	int				u;
 
@@ -33,6 +23,8 @@ int					ft_atoi(const char *nptr)
 	temp = nptr;
 	while ((*temp >= 9 && *temp <= 13) || *temp == ' ')
 		temp++;
+	if (*temp == '-' || *temp == '+')
+		temp++;
 	while (*temp >= '0' && *temp <= '9')
 		temp++;
 	while ((temp != nptr) || ((*temp < 9 && *temp > 13) && *temp != ' '))
@@ -40,12 +32,13 @@ int					ft_atoi(const char *nptr)
 		temp--;
 		if (*temp >= '0' && *temp <= '9')
 		{
-			if (overflow(nb, *temp, u))
-				return (2147483647);
 			nb += (*temp - 48) * u;
 			u *= 10;
+			if (nb > MAX_INT)
+				return (MAX_INT);
 		}
-		nb = (*temp == '-') ? -nb : nb;
+		else if (*temp == '-')
+			nb *= -1;
 	}
-	return (nb);
+	return ((int)nb);
 }

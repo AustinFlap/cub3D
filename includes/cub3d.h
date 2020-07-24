@@ -6,7 +6,7 @@
 /*   By: avieira <avieira@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/15 14:31:18 by avieira           #+#    #+#             */
-/*   Updated: 2020/07/06 15:16:14 by avieira          ###   ########.fr       */
+/*   Updated: 2020/07/24 12:33:27 by avieira          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@
 # define SUCCESS 1
 # define FAIL 0
 # define ERROR -1
+# define MAX_INT 2147483648
 # define COL 1.0000000001
 
 /*
@@ -165,6 +166,7 @@ typedef struct				s_game
 
 size_t						ft_strlen(const char *str);
 int							ft_strncmp(const char *s1, const char *s2, int l);
+int							ft_strcmp(const char *s1, const char *s2);
 int							write_elem(t_file *file, int id, char *line);
 char						*ft_strtrim(char const *str, char const *sep);
 int							ft_atoi(const char *number);

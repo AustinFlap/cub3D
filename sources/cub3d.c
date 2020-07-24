@@ -6,7 +6,7 @@
 /*   By: avieira <avieira@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/05 15:55:18 by avieira           #+#    #+#             */
-/*   Updated: 2020/07/06 15:17:26 by avieira          ###   ########.fr       */
+/*   Updated: 2020/07/24 13:53:32 by avieira          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,6 @@ void			screen_manager(t_game *game)
 		mlx_hook(game->mlx.win, 2, 1L << 0, &input, game);
 		mlx_loop_hook(game->mlx.pmlx, &raycasting, game);
 		mlx_loop(game->mlx.pmlx);
-	printf("%p\n", game->mlx.pmlx);
 	}
 	else
 	{
@@ -48,7 +47,7 @@ int				main(int ac, char **av)
 	game.mlx.pmlx = NULL;
 	if (ac == 3)
 	{
-		if (ft_strncmp(av[2], "--save", 6))
+		if (ft_strcmp(av[2], "--save"))
 			abort_cub3d_at_input("\nArgument invalide\n");
 		game.save = 1;
 	}

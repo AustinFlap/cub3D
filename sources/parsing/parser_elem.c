@@ -6,7 +6,7 @@
 /*   By: avieira <avieira@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/26 04:20:22 by avieira           #+#    #+#             */
-/*   Updated: 2020/07/05 21:11:11 by avieira          ###   ########.fr       */
+/*   Updated: 2020/07/24 12:31:28 by avieira          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ int			path(t_file *file, int id, char *line, int n_goal)
 		return (FAIL);
 	if (!(file->path[id] = ft_strtrim(line, " \t")))
 		return (ERROR);
-	if (ft_strncmp(file->path[id] + ft_strlen(file->path[id]) - 4, ".xpm", 4))
+	if (ft_strcmp(file->path[id] + ft_strlen(file->path[id]) - 4, ".xpm"))
 		return (ERROR);
 	return (SUCCESS);
 }

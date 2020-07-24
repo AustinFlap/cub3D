@@ -6,7 +6,7 @@
 /*   By: avieira <avieira@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/19 12:50:55 by avieira           #+#    #+#             */
-/*   Updated: 2020/07/06 02:05:55 by avieira          ###   ########.fr       */
+/*   Updated: 2020/07/24 12:53:03 by avieira          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,11 +49,11 @@ void				draw_sprite(t_sprite *spr, t_game *game, t_text *text_s,
 
 	pos[0] = spr->edgex[0] - 1;
 	pos[1] = spr->edgey[0] - 1;
-	while (++(pos[1]) <= spr->edgey[1])
+	while (++(pos[1]) <= spr->edgey[1] && spr->height)
 	{
 		spry = (((pos[1] * 256 - game->file.r[1] * 128 +
 					spr->height * 128) * text_s->height) / spr->height) / 256;
-		while (++(pos[0]) <= spr->edgex[1])
+		while (++(pos[0]) <= spr->edgex[1] && spr->width)
 		{
 			if (pos[0] >= 0 && pos[0] < game->file.r[0] && spr->depthy > 0 &&
 				spr->depthy < l_ray[pos[0]])

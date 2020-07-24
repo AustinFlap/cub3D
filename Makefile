@@ -1,4 +1,4 @@
-NAME = Cub3D
+NAME = cub3D
 
 CC = clang
 
@@ -13,6 +13,7 @@ SRCS = 	sources/parsing/parser.c \
 			sources/GNL/get_next_line_utils.c \
 			sources/utils/ft_strlen.c \
 			sources/utils/ft_strncmp.c \
+			sources/utils/ft_strcmp.c \
 			sources/utils/ft_strtrim.c \
 			sources/utils/ft_atoi.c \
 			sources/utils/ft_split.c \

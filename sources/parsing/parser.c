@@ -6,7 +6,7 @@
 /*   By: avieira <avieira@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/14 15:25:27 by avieira           #+#    #+#             */
-/*   Updated: 2020/07/06 00:23:36 by avieira          ###   ########.fr       */
+/*   Updated: 2020/07/24 12:29:59 by avieira          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ int				init(t_file *f, char **line, int *fd, char *file_name)
 	f->path = NULL;
 	if (ft_strlen(file_name) > 4)
 	{
-		if (ft_strncmp(file_name + ft_strlen(file_name) - 4, ".cub", 4))
+		if (ft_strcmp(file_name + ft_strlen(file_name) - 4, ".cub"))
 			return ((*fd = ERROR));
 	}
 	else

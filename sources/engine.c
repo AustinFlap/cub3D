@@ -6,7 +6,7 @@
 /*   By: avieira <avieira@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/05 16:27:03 by avieira           #+#    #+#             */
-/*   Updated: 2020/07/06 01:01:55 by avieira          ###   ########.fr       */
+/*   Updated: 2020/07/24 13:53:14 by avieira          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,7 +91,6 @@ int			raycasting(t_game *game)
 {
 	int		x;
 	double	l_ray[game->file.r[0]];
-
 	if (!(game->img.pimg = mlx_new_image(game->mlx.pmlx, game->file.r[0]
 														, game->file.r[1])))
 		abort_cub3d(game);
