@@ -23,8 +23,10 @@ void			ini_mlx(t_mlx *mlx, int *r, int save, t_game *game)
 	game->text_s.img.pimg = NULL;
 	game->img.pimg = NULL;
 	game->mlx.win = NULL;
+	game->mlx.pmlx = NULL;
 	if (!(mlx->pmlx = mlx_init()))
 		abort_cub3d(game);
+	printf("init %p\n", mlx->pmlx);
 	if (!save)
 	{
 		mlx_get_screen_size(mlx->pmlx, &screen_size[0], &screen_size[1]);

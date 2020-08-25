@@ -91,6 +91,7 @@ int			raycasting(t_game *game)
 {
 	int		x;
 	double	l_ray[game->file.r[0]];
+
 	if (!(game->img.pimg = mlx_new_image(game->mlx.pmlx, game->file.r[0]
 														, game->file.r[1])))
 		abort_cub3d(game);
