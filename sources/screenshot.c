@@ -17,7 +17,7 @@ void				file_header(int resy, int resx, unsigned char *file_h)
 	long int		n_oct;
 	int				pad;
 
-	pad = (4 - (resx * 3) % 4);
+	pad = (4 - (resx * 3) % 4) % 4;
 	n_oct = 54 + (3 * resx + pad) * resy;
 	file_h[0] = 'B';
 	file_h[1] = 'M';
@@ -65,6 +65,7 @@ int					convert_img(t_img *img, int fd, int resy, int resx)
 			if (write(fd, rgb, 3) == ERROR)
 				return (ERROR);
 		}
+		write(fd, " ", (4 - (resx * 3) % 4) % 4);
 	}
 	return (SUCCESS);
 }
