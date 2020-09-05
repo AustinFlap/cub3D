@@ -77,9 +77,14 @@ int			destroy(t_game *game, char *msg)
 		free_text(game);
 		if (!game->save)
 			mlx_destroy_window(game->mlx.pmlx, game->mlx.win);
-		free(game->sprite.sprpos);
-		free(game->sprite.dist);
-		free(game->sprite.order);
+		if (game->sprite.sprpos)
+			free(game->sprite.sprpos);
+		if (game->sprite.dist)
+			free(game->sprite.dist);
+		if (game->sprite.order)
+			free(game->sprite.order);
+		if (game->l_ray)
+			free(game->l_ray);
 		free(game->mlx.pmlx);
 	}
 	exit(EXIT_SUCCESS);

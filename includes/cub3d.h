@@ -25,8 +25,10 @@
 # define SUCCESS 1
 # define FAIL 0
 # define ERROR -1
-# define MAX_INT 2147483648
+# define MAX_INT 2147483647
 # define COL 1.0000000001
+# define MAX_SIZE 32767
+# define MAX_SIZE_MSG "32767x32767, max size supported by Xorg. (run xrandr)\n"
 
 /*
 ** COMMANDES
@@ -162,6 +164,7 @@ typedef struct				s_game
 	t_text					text_s;
 	t_sprite				sprite;
 	int						save;
+	double					*l_ray;
 }							t_game;
 
 size_t						ft_strlen(const char *str);
@@ -184,8 +187,7 @@ unsigned int				get_rgb(int r, int g, int b);
 void						ini_text(t_game *game);
 void						ini_mlx(t_mlx *mlx, int *r, int save, t_game *game);
 void						draw_text(t_game *game, int x, int *edges, int *y);
-void						ini_edges(t_game *game, t_cam *cam, int *edges,
-																	int *resy);
+void						ini_edges(t_game *game, t_cam *cam, int *edges);
 int							is_empty(char **map, int x, int y);
 int							ini_sprite(t_sprite *sprite, char **map);
 void						*ft_calloc(size_t count, size_t size);

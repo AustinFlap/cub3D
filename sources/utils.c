@@ -16,7 +16,7 @@ void			pixel_put(t_img *img, int x, int y, unsigned int color)
 {
 	char		*dst;
 
-	dst = img->adr + (y * img->l_line + x * (img->bpp / 8));
+	dst = img->adr + (y * img->l_line  + x * (img->bpp / 8));
 	*(unsigned int *)dst = color;
 }
 

@@ -69,10 +69,9 @@ void		get_distance(t_cam *cam, t_player *player)
 void		draw_line(t_cam *cam, int x, t_game *game)
 {
 	int		edges[2];
-	int		resy;
 	int		y;
 
-	ini_edges(game, cam, edges, &resy);
+	ini_edges(game, cam, edges);
 	y = 0;
 	while (y < edges[0])
 	{
@@ -80,7 +79,7 @@ void		draw_line(t_cam *cam, int x, t_game *game)
 		y++;
 	}
 	draw_text(game, x, edges, &y);
-	while (y < resy)
+	while (y < game->file.r[1])
 	{
 		pixel_put(&game->img, x, y, game->file.hex_f);
 		y++;
@@ -90,7 +89,6 @@ void		draw_line(t_cam *cam, int x, t_game *game)
 int			raycasting(t_game *game)
 {
 	int		x;
-	double	l_ray[game->file.r[0]];
 
 	if (!(game->img.pimg = mlx_new_image(game->mlx.pmlx, game->file.r[0]
 														, game->file.r[1])))
@@ -104,9 +102,9 @@ int			raycasting(t_game *game)
 		detection(&game->cam, &game->file);
 		get_distance(&game->cam, &game->player);
 		draw_line(&game->cam, x, game);
-		l_ray[x] = game->cam.distance;
+		game->l_ray[x] = game->cam.distance;
 	}
-	sprite(game, l_ray);
+	sprite(game, game->l_ray);
 	if (!game->save)
 		mlx_put_image_to_window(game->mlx.pmlx, game->mlx.win,
 														game->img.pimg, 0, 0);

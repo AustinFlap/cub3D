@@ -101,7 +101,7 @@ void				bmp(t_img *img, t_game *game)
 		abort_screenshot(game, bmp_h, file_h);
 	if (write(fd, file_h, 14) == ERROR || write(fd, bmp_h, 40) == ERROR)
 		abort_screenshot(game, bmp_h, file_h);
-	if (convert_img(img, fd, game->file.r[1] - 1, game->file.r[0]) == ERROR)
+	if (convert_img(img, fd, game->file.r[1], game->file.r[0]) == ERROR)
 		abort_screenshot(game, bmp_h, file_h);
 	if (close(fd) == ERROR)
 		abort_screenshot(game, bmp_h, file_h);

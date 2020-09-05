@@ -25,6 +25,8 @@ int				input(int key, t_game *game)
 
 void			screen_manager(t_game *game)
 {
+	if (!(game->l_ray = malloc(sizeof(double) * game->file.r[0])))
+		abort_cub3d(game);
 	if (!game->save)
 	{
 		mlx_hook(game->mlx.win, 17, 1L << 17, &destroy, game);

@@ -24,9 +24,12 @@ void			ini_mlx(t_mlx *mlx, int *r, int save, t_game *game)
 	game->img.pimg = NULL;
 	game->mlx.win = NULL;
 	game->mlx.pmlx = NULL;
+	game->l_ray = NULL;
+	game->sprite.order = NULL;
+	game->sprite.dist = NULL;
+	game->sprite.sprpos = NULL;
 	if (!(mlx->pmlx = mlx_init()))
 		abort_cub3d(game);
-	printf("init %p\n", mlx->pmlx);
 	if (!save)
 	{
 		mlx_get_screen_size(mlx->pmlx, &screen_size[0], &screen_size[1]);
@@ -35,6 +38,8 @@ void			ini_mlx(t_mlx *mlx, int *r, int save, t_game *game)
 		if (!(mlx->win = mlx_new_window(mlx->pmlx, r[0], r[1], "cub3d")))
 			abort_cub3d(game);
 	}
+	else if (r[0] > MAX_SIZE || r[1] > MAX_SIZE)
+		destroy(game, MAX_SIZE_MSG);
 }
 
 void			ini_text(t_game *g)
@@ -64,14 +69,16 @@ void			ini_text(t_game *g)
 		&g->text_s.img.bpp, &g->text_s.img.l_line, &g->text_s.img.endian);
 }
 
-void			ini_edges(t_game *game, t_cam *cam, int edges[2], int *resy)
+void			ini_edges(t_game *game, t_cam *cam, int edges[2])
 {
-	*resy = game->file.r[1];
-	cam->wallheight = (int)((double)*resy / cam->distance);
-	edges[0] = -cam->wallheight / 2 + *resy / 2;
+	int			resy;
+
+	resy = game->file.r[1];
+	cam->wallheight = ((double)resy / cam->distance);
+	edges[0] = -cam->wallheight / 2 + resy / 2;
 	edges[0] = (edges[0] < 0) ? 0 : edges[0];
-	edges[1] = cam->wallheight / 2 + *resy / 2;
-	edges[1] = (edges[1] < *resy) ? edges[1] : *resy - 1;
+	edges[1] = cam->wallheight / 2 + resy / 2;
+	edges[1] = (edges[1] < resy) ? edges[1] : resy - 1;
 }
 
 int				spr_count(t_sprite *sprite, char **map)
