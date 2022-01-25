@@ -32,7 +32,7 @@ OBJ = $(SRCS:%.c=%.o)
 
 IFLAGS = ./includes/
 
-CFLAGS = -Wall -Wextra -Werror -lm -lbsd -lX11 -lXext
+CFLAGS = -lm -lbsd -lX11 -lXext
 
 SRC_DIR = sources/
 GNL_DIR = sources/GNL/
